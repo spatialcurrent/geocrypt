@@ -38,6 +38,7 @@ Or install directly from GitHub_ with:
 Usage
 -----------------
 
+Below are some simple use cases.  See test.py for more use cases.
 
 .. code:: python
 
@@ -50,6 +51,18 @@ Usage
    # digest_b == "cc0a149fd1387a34412ee47cb08ab12b"
 
    # digest_a == digest_b
+
+By default, the md5 hash algorithm is used, but other algorithms can be selected, too.
+
+.. code:: python
+
+    geocrypt.hash({"type": "lonlat", "value": [-77.042999267578125, 38.922558058625356]}, algorithm="sha512")
+
+You can also round all coordinates to a given number of decimal places.  5 is a standard number to round to for online maps.  By rounding to 5 decimal places, you mitigate floating point errors that might lead 2 different hashes for locations that are the same for all intents and purposes, such as [-77.042999267578125, 38.922558058625356] and [-77.042999299999, 38.922558099999].
+
+.. code:: python
+
+    geocrypt.hash({"type": "lonlat", "value": [-77.042999267578125, 38.922558058625356]}, decimals=5)
 
 Testing
 -----------------
