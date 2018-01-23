@@ -51,6 +51,14 @@ Usage
 
    # digest_a == digest_b
 
+Testing
+-----------------
+
+For unit tests, run the following command from the project root folder:
+
+.. code:: shell
+
+    python -m unittest -v geocrypt.test
 
 Contributing
 -----------------
