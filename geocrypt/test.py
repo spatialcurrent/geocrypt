@@ -103,9 +103,9 @@ test_cases = {
 }
 
 
-class TextGeocrypt(unittest.TestCase):
+class TestGeocrypt(unittest.TestCase):
     """
-    TextGeocrypt is used for testing geocrypt
+    TestGeocrypt is used for testing geocrypt
     """
 
     def test_point(self):
