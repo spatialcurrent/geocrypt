@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
-#########################################################################
+# =================================================================
 #
-# Copyright (C) 2018 Spatial Current, Inc.
+# Copyright (C) 2021 Spatial Current, Inc. - All Rights Reserved
+# Released as open source under the MIT License.  See LICENSE file.
 #
-#########################################################################
+# =================================================================
 import unittest
 
 test_cases = {
@@ -36,7 +37,7 @@ test_cases = {
                 }
             }
         ],
-        "output": "5fc59b25fcc551bbf8cc77b2908dbad3"
+        "output": "a49b25eda343f0dd88e93dca71d0c5a0"
     },
     "polygon": {
         "input": [
@@ -98,7 +99,7 @@ test_cases = {
                 ]
             }
         ],
-        "output": "33d364e7a0c83aafffbb5f407ca01389"
+        "output": "ca9f61e80989882e6876f69aef90a899"
     }
 }
 
@@ -115,9 +116,9 @@ class TestGeocrypt(unittest.TestCase):
             try:
                 self.assertEqual(geocrypt.hash(x), test_cases["point"]["output"])
             except Exception as err:
-                print "Input Object:", x
-                print "Calculated Hash:", geocrypt.hash(x)
-                print "Valid Hash:", test_cases["point"]["output"]
+                print("Input Object:", x)
+                print("Calculated Hash:", geocrypt.hash(x))
+                print("Valid Hash:", test_cases["point"]["output"])
                 raise err
 
     def test_polygon(self):
@@ -127,9 +128,9 @@ class TestGeocrypt(unittest.TestCase):
             try:
                 self.assertEqual(geocrypt.hash(x), test_cases["polygon"]["output"])
             except Exception as err:
-                print "Input Object:", x
-                print "Calculated Hash:", geocrypt.hash(x)
-                print "Valid Hash:", test_cases["polygon"]["output"]
+                print("Input Object:", x)
+                print("Calculated Hash:", geocrypt.hash(x))
+                print("Valid Hash:", test_cases["polygon"]["output"])
                 raise err
 
 
