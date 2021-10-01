@@ -1,5 +1,14 @@
+# =================================================================
+#
+# Copyright (C) 2021 Spatial Current, Inc. - All Rights Reserved
+# Released as open source under the MIT License.  See LICENSE file.
+#
+# =================================================================
+
 import json
 import hashlib
+
+from functools import cmp_to_key
 
 
 def hash(value, value_type=None, decimals=None, algorithm="md5"):
@@ -41,7 +50,8 @@ def hash(value, value_type=None, decimals=None, algorithm="md5"):
             coords = [round(i, decimals) for i in coords]
 
         geometries = [{"coordinates": coords, "type": "Point"}]
-        text = json.dumps(geometries, ensure_ascii=False)
+
+        text = json.dumps(geometries, ensure_ascii=False, separators=(',', ':'), sort_keys=True)
 
     elif value_type_lc == "featurecollection":
 
@@ -61,9 +71,9 @@ def hash(value, value_type=None, decimals=None, algorithm="md5"):
 
             geometries = [round_geometry(g, decimals) for g in geometries]
 
-        geometries = sorted(geometries, cmp=geometry_comparator)
+        geometries = sorted(geometries, key=cmp_to_key(geometry_comparator))
 
-        text = json.dumps(geometries, ensure_ascii=False)
+        text = json.dumps(geometries, ensure_ascii=False, separators=(',', ':'), sort_keys=True)
 
     elif value_type_lc == "feature":
 
@@ -81,9 +91,9 @@ def hash(value, value_type=None, decimals=None, algorithm="md5"):
 
             geometries = [round_geometry(g, decimals) for g in geometries]
 
-        geometries = sorted(geometries, cmp=geometry_comparator)
+        geometries = sorted(geometries, key=cmp_to_key(geometry_comparator))
 
-        text = json.dumps(geometries, ensure_ascii=False)
+        text = json.dumps(geometries, ensure_ascii=False, separators=(',', ':'), sort_keys=True)
 
     elif value_type_lc == "point":
         geometries = [value]
@@ -95,9 +105,9 @@ def hash(value, value_type=None, decimals=None, algorithm="md5"):
 
             geometries = [round_geometry(g, decimals) for g in geometries]
 
-        geometries = sorted(geometries, cmp=geometry_comparator)
+        geometries = sorted(geometries, key=cmp_to_key(geometry_comparator))
 
-        text = json.dumps(geometries, ensure_ascii=False)
+        text = json.dumps(geometries, ensure_ascii=False, separators=(',', ':'), sort_keys=True)
 
     elif value_type_lc == "polygon":
 
@@ -110,9 +120,9 @@ def hash(value, value_type=None, decimals=None, algorithm="md5"):
 
             geometries = [round_geometry(g, decimals) for g in geometries]
 
-        geometries = sorted(geometries, cmp=geometry_comparator)
+        geometries = sorted(geometries, key=cmp_to_key(geometry_comparator))
 
-        text = json.dumps(geometries, ensure_ascii=False)
+        text = json.dumps(geometries, ensure_ascii=False, separators=(',', ':'), sort_keys=True)
 
     else:
         raise Exception("Unknown value type "+value_type_lc+".")
@@ -120,19 +130,19 @@ def hash(value, value_type=None, decimals=None, algorithm="md5"):
     digest = None
 
     if algorithm == "md5":
-        digest = hashlib.md5(text).hexdigest()
+        digest = hashlib.md5(text.encode("utf-8")).hexdigest()
     elif algorithm == "sha1":
-        digest = hashlib.sha1(text).hexdigest()
+        digest = hashlib.sha1(text.encode("utf-8")).hexdigest()
     elif algorithm == "sha224":
-        digest = hashlib.sha224(text).hexdigest()
+        digest = hashlib.sha224(text.encode("utf-8")).hexdigest()
     elif algorithm == "sha256":
-        digest = hashlib.sha256(text).hexdigest()
+        digest = hashlib.sha256(text.encode("utf-8")).hexdigest()
     elif algorithm == "sha384":
-        digest = hashlib.sha384(text).hexdigest()
+        digest = hashlib.sha384(text.encode("utf-8")).hexdigest()
     elif algorithm == "sha512":
-        digest = hashlib.sha512(text).hexdigest()
+        digest = hashlib.sha512(text.encode("utf-8")).hexdigest()
     else:
-        raise Exception("Unknown hash function "+algorithm+".")
+        raise Exception("Unknown hash function {}".format(algorithm))
 
     return digest
 

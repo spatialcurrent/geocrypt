@@ -1,15 +1,15 @@
 geocrypt
 ==============
 
-.. image:: https://travis-ci.org/spatialcurrent/geocrypt.png
-    :target: https://travis-ci.org/spatialcurrent/geocrypt
+.. image:: https://circleci.com/gh/spatialcurrent/geocrypt.svg?style=svg
+    :target: https://circleci.com/gh/spatialcurrent/geocrypt
 
 .. image:: https://img.shields.io/pypi/v/geocrypt.svg
     :target: https://pypi.python.org/pypi/geocrypt
 
-.. image:: https://readthedocs.org/projects/geocrypt/badge/?version=master
+.. image:: https://readthedocs.org/projects/geocrypt/badge/?version=main
         :target: http://geocrypt.readthedocs.org/en/latest/
-        :alt: Master Documentation Status
+        :alt: Main Documentation Status
 
 Description
 -----------------
@@ -33,7 +33,7 @@ Or install directly from GitHub_ with:
 
 .. code-block:: bash
 
-    pip install git+git://github.com/spatialcurrent/geocrypt.git@master
+    pip install git+git://github.com/spatialcurrent/geocrypt.git@main
 
 Usage
 -----------------
@@ -79,7 +79,7 @@ Contributing
 `Spatial Current, Inc.`_ is currently accepting pull requests for this repository.  We'd love to have your contributions!  Please see `Contributing.rst`_ for how to get started.
 
 .. _`Spatial Current, Inc.`: https://spatialcurrent.io
-.. _Contributing.rst: https://github.com/spatialcurrent/geocrypt/blob/master/CONTRIBUTING.rst
+.. _Contributing.rst: https://github.com/spatialcurrent/geocrypt/blob/main/CONTRIBUTING.rst
 
 License
 -----------------
